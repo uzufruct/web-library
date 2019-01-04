@@ -1,0 +1,185 @@
+I, [2018-12-27T00:15:09.527312 #19638]  INFO -- : [f2e6ba13-7c97-4f5c-9c9b-f45f025c3517] Started GET "/" for 127.0.0.1 at 2018-12-27 00:15:09 +0700
+I, [2018-12-27T00:15:09.540679 #19638]  INFO -- : [f2e6ba13-7c97-4f5c-9c9b-f45f025c3517] Processing by BooksController#index as HTML
+I, [2018-12-27T00:15:09.591378 #19638]  INFO -- : [f2e6ba13-7c97-4f5c-9c9b-f45f025c3517]   Rendering books/index.html.erb within layouts/application
+D, [2018-12-27T00:15:09.599536 #19638] DEBUG -- : [f2e6ba13-7c97-4f5c-9c9b-f45f025c3517]   [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+I, [2018-12-27T00:15:09.601183 #19638]  INFO -- : [f2e6ba13-7c97-4f5c-9c9b-f45f025c3517]   Rendered books/index.html.erb within layouts/application (9.4ms)
+I, [2018-12-27T00:15:09.601746 #19638]  INFO -- : [f2e6ba13-7c97-4f5c-9c9b-f45f025c3517] Completed 500 Internal Server Error in 61ms (ActiveRecord: 1.4ms)
+F, [2018-12-27T00:15:09.604984 #19638] FATAL -- : [f2e6ba13-7c97-4f5c-9c9b-f45f025c3517]   
+F, [2018-12-27T00:15:09.605277 #19638] FATAL -- : [f2e6ba13-7c97-4f5c-9c9b-f45f025c3517] ActionView::Template::Error (SQLite3::SQLException: no such table: books: SELECT "books".* FROM "books"):
+F, [2018-12-27T00:15:09.605719 #19638] FATAL -- : [f2e6ba13-7c97-4f5c-9c9b-f45f025c3517]     13: 
+[f2e6ba13-7c97-4f5c-9c9b-f45f025c3517]     14: <section class="section">
+[f2e6ba13-7c97-4f5c-9c9b-f45f025c3517]     15:   <div class="book-grid">
+[f2e6ba13-7c97-4f5c-9c9b-f45f025c3517]     16:     <%= render @books %>
+[f2e6ba13-7c97-4f5c-9c9b-f45f025c3517]     17:   </div>
+[f2e6ba13-7c97-4f5c-9c9b-f45f025c3517]     18: </section>
+F, [2018-12-27T00:15:09.605800 #19638] FATAL -- : [f2e6ba13-7c97-4f5c-9c9b-f45f025c3517]   
+F, [2018-12-27T00:15:09.605923 #19638] FATAL -- : [f2e6ba13-7c97-4f5c-9c9b-f45f025c3517] app/views/books/index.html.erb:16:in `_app_views_books_index_html_erb___555712494884983542_47426985358520'
+I, [2018-12-27T00:15:10.603345 #19638]  INFO -- : [9091358c-fa0d-4ce8-b910-5e2e3ab6289f] Started GET "/favicon.ico" for 127.0.0.1 at 2018-12-27 00:15:10 +0700
+F, [2018-12-27T00:15:10.605309 #19638] FATAL -- : [9091358c-fa0d-4ce8-b910-5e2e3ab6289f]   
+F, [2018-12-27T00:15:10.605567 #19638] FATAL -- : [9091358c-fa0d-4ce8-b910-5e2e3ab6289f] ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+F, [2018-12-27T00:15:10.605706 #19638] FATAL -- : [9091358c-fa0d-4ce8-b910-5e2e3ab6289f]   
+F, [2018-12-27T00:15:10.605840 #19638] FATAL -- : [9091358c-fa0d-4ce8-b910-5e2e3ab6289f] actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] railties (5.2.0) lib/rails/engine.rb:524:in `call'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+[9091358c-fa0d-4ce8-b910-5e2e3ab6289f] puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+I, [2018-12-27T00:15:13.188763 #19638]  INFO -- : [9a5dfa37-acf3-47ea-a287-8882c2e5f5d5] Started GET "/" for 127.0.0.1 at 2018-12-27 00:15:13 +0700
+I, [2018-12-27T00:15:13.191189 #19638]  INFO -- : [9a5dfa37-acf3-47ea-a287-8882c2e5f5d5] Processing by BooksController#index as HTML
+I, [2018-12-27T00:15:13.194232 #19638]  INFO -- : [9a5dfa37-acf3-47ea-a287-8882c2e5f5d5]   Rendering books/index.html.erb within layouts/application
+D, [2018-12-27T00:15:13.195964 #19638] DEBUG -- : [9a5dfa37-acf3-47ea-a287-8882c2e5f5d5]   [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+I, [2018-12-27T00:15:13.197351 #19638]  INFO -- : [9a5dfa37-acf3-47ea-a287-8882c2e5f5d5]   Rendered books/index.html.erb within layouts/application (2.8ms)
+I, [2018-12-27T00:15:13.197935 #19638]  INFO -- : [9a5dfa37-acf3-47ea-a287-8882c2e5f5d5] Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.7ms)
+F, [2018-12-27T00:15:13.201705 #19638] FATAL -- : [9a5dfa37-acf3-47ea-a287-8882c2e5f5d5]   
+F, [2018-12-27T00:15:13.201921 #19638] FATAL -- : [9a5dfa37-acf3-47ea-a287-8882c2e5f5d5] ActionView::Template::Error (SQLite3::SQLException: no such table: books: SELECT "books".* FROM "books"):
+F, [2018-12-27T00:15:13.202221 #19638] FATAL -- : [9a5dfa37-acf3-47ea-a287-8882c2e5f5d5]     13: 
+[9a5dfa37-acf3-47ea-a287-8882c2e5f5d5]     14: <section class="section">
+[9a5dfa37-acf3-47ea-a287-8882c2e5f5d5]     15:   <div class="book-grid">
+[9a5dfa37-acf3-47ea-a287-8882c2e5f5d5]     16:     <%= render @books %>
+[9a5dfa37-acf3-47ea-a287-8882c2e5f5d5]     17:   </div>
+[9a5dfa37-acf3-47ea-a287-8882c2e5f5d5]     18: </section>
+F, [2018-12-27T00:15:13.202287 #19638] FATAL -- : [9a5dfa37-acf3-47ea-a287-8882c2e5f5d5]   
+F, [2018-12-27T00:15:13.202347 #19638] FATAL -- : [9a5dfa37-acf3-47ea-a287-8882c2e5f5d5] app/views/books/index.html.erb:16:in `_app_views_books_index_html_erb___555712494884983542_47426985358520'
+I, [2018-12-27T00:15:14.915689 #19638]  INFO -- : [2b5103c5-2cdd-49bf-a02c-2759c74f4411] Started GET "/" for 127.0.0.1 at 2018-12-27 00:15:14 +0700
+I, [2018-12-27T00:15:14.917429 #19638]  INFO -- : [2b5103c5-2cdd-49bf-a02c-2759c74f4411] Processing by BooksController#index as HTML
+I, [2018-12-27T00:15:14.920588 #19638]  INFO -- : [2b5103c5-2cdd-49bf-a02c-2759c74f4411]   Rendering books/index.html.erb within layouts/application
+D, [2018-12-27T00:15:14.922649 #19638] DEBUG -- : [2b5103c5-2cdd-49bf-a02c-2759c74f4411]   [1m[36mBook Load (0.9ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+I, [2018-12-27T00:15:14.924362 #19638]  INFO -- : [2b5103c5-2cdd-49bf-a02c-2759c74f4411]   Rendered books/index.html.erb within layouts/application (3.3ms)
+I, [2018-12-27T00:15:14.924958 #19638]  INFO -- : [2b5103c5-2cdd-49bf-a02c-2759c74f4411] Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.9ms)
+F, [2018-12-27T00:15:14.927955 #19638] FATAL -- : [2b5103c5-2cdd-49bf-a02c-2759c74f4411]   
+F, [2018-12-27T00:15:14.928199 #19638] FATAL -- : [2b5103c5-2cdd-49bf-a02c-2759c74f4411] ActionView::Template::Error (SQLite3::SQLException: no such table: books: SELECT "books".* FROM "books"):
+F, [2018-12-27T00:15:14.928660 #19638] FATAL -- : [2b5103c5-2cdd-49bf-a02c-2759c74f4411]     13: 
+[2b5103c5-2cdd-49bf-a02c-2759c74f4411]     14: <section class="section">
+[2b5103c5-2cdd-49bf-a02c-2759c74f4411]     15:   <div class="book-grid">
+[2b5103c5-2cdd-49bf-a02c-2759c74f4411]     16:     <%= render @books %>
+[2b5103c5-2cdd-49bf-a02c-2759c74f4411]     17:   </div>
+[2b5103c5-2cdd-49bf-a02c-2759c74f4411]     18: </section>
+F, [2018-12-27T00:15:14.928768 #19638] FATAL -- : [2b5103c5-2cdd-49bf-a02c-2759c74f4411]   
+F, [2018-12-27T00:15:14.928843 #19638] FATAL -- : [2b5103c5-2cdd-49bf-a02c-2759c74f4411] app/views/books/index.html.erb:16:in `_app_views_books_index_html_erb___555712494884983542_47426985358520'
+I, [2018-12-27T00:15:27.762231 #19638]  INFO -- : [efb65c1b-a8d8-4600-a706-af0b620bc9db] Started GET "/" for 127.0.0.1 at 2018-12-27 00:15:27 +0700
+I, [2018-12-27T00:15:27.763832 #19638]  INFO -- : [efb65c1b-a8d8-4600-a706-af0b620bc9db] Processing by BooksController#index as HTML
+I, [2018-12-27T00:15:27.767035 #19638]  INFO -- : [efb65c1b-a8d8-4600-a706-af0b620bc9db]   Rendering books/index.html.erb within layouts/application
+D, [2018-12-27T00:15:27.768777 #19638] DEBUG -- : [efb65c1b-a8d8-4600-a706-af0b620bc9db]   [1m[36mBook Load (0.8ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+I, [2018-12-27T00:15:27.770274 #19638]  INFO -- : [efb65c1b-a8d8-4600-a706-af0b620bc9db]   Rendered books/index.html.erb within layouts/application (2.9ms)
+I, [2018-12-27T00:15:27.770716 #19638]  INFO -- : [efb65c1b-a8d8-4600-a706-af0b620bc9db] Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.8ms)
+F, [2018-12-27T00:15:27.773788 #19638] FATAL -- : [efb65c1b-a8d8-4600-a706-af0b620bc9db]   
+F, [2018-12-27T00:15:27.774097 #19638] FATAL -- : [efb65c1b-a8d8-4600-a706-af0b620bc9db] ActionView::Template::Error (SQLite3::SQLException: no such table: books: SELECT "books".* FROM "books"):
+F, [2018-12-27T00:15:27.774498 #19638] FATAL -- : [efb65c1b-a8d8-4600-a706-af0b620bc9db]     13: 
+[efb65c1b-a8d8-4600-a706-af0b620bc9db]     14: <section class="section">
+[efb65c1b-a8d8-4600-a706-af0b620bc9db]     15:   <div class="book-grid">
+[efb65c1b-a8d8-4600-a706-af0b620bc9db]     16:     <%= render @books %>
+[efb65c1b-a8d8-4600-a706-af0b620bc9db]     17:   </div>
+[efb65c1b-a8d8-4600-a706-af0b620bc9db]     18: </section>
+F, [2018-12-27T00:15:27.774570 #19638] FATAL -- : [efb65c1b-a8d8-4600-a706-af0b620bc9db]   
+F, [2018-12-27T00:15:27.774657 #19638] FATAL -- : [efb65c1b-a8d8-4600-a706-af0b620bc9db] app/views/books/index.html.erb:16:in `_app_views_books_index_html_erb___555712494884983542_47426985358520'
+I, [2018-12-27T00:15:35.775595 #19638]  INFO -- : [f6aaf366-f6f9-4c6e-99c8-261b66849d9a] Started GET "/" for 127.0.0.1 at 2018-12-27 00:15:35 +0700
+I, [2018-12-27T00:15:35.777190 #19638]  INFO -- : [f6aaf366-f6f9-4c6e-99c8-261b66849d9a] Processing by BooksController#index as HTML
+I, [2018-12-27T00:15:35.780390 #19638]  INFO -- : [f6aaf366-f6f9-4c6e-99c8-261b66849d9a]   Rendering books/index.html.erb within layouts/application
+D, [2018-12-27T00:15:35.782590 #19638] DEBUG -- : [f6aaf366-f6f9-4c6e-99c8-261b66849d9a]   [1m[36mBook Load (1.1ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+I, [2018-12-27T00:15:35.785264 #19638]  INFO -- : [f6aaf366-f6f9-4c6e-99c8-261b66849d9a]   Rendered books/index.html.erb within layouts/application (4.4ms)
+I, [2018-12-27T00:15:35.785796 #19638]  INFO -- : [f6aaf366-f6f9-4c6e-99c8-261b66849d9a] Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.1ms)
+F, [2018-12-27T00:15:35.788991 #19638] FATAL -- : [f6aaf366-f6f9-4c6e-99c8-261b66849d9a]   
+F, [2018-12-27T00:15:35.789193 #19638] FATAL -- : [f6aaf366-f6f9-4c6e-99c8-261b66849d9a] ActionView::Template::Error (SQLite3::SQLException: no such table: books: SELECT "books".* FROM "books"):
+F, [2018-12-27T00:15:35.789586 #19638] FATAL -- : [f6aaf366-f6f9-4c6e-99c8-261b66849d9a]     13: 
+[f6aaf366-f6f9-4c6e-99c8-261b66849d9a]     14: <section class="section">
+[f6aaf366-f6f9-4c6e-99c8-261b66849d9a]     15:   <div class="book-grid">
+[f6aaf366-f6f9-4c6e-99c8-261b66849d9a]     16:     <%= render @books %>
+[f6aaf366-f6f9-4c6e-99c8-261b66849d9a]     17:   </div>
+[f6aaf366-f6f9-4c6e-99c8-261b66849d9a]     18: </section>
+F, [2018-12-27T00:15:35.789657 #19638] FATAL -- : [f6aaf366-f6f9-4c6e-99c8-261b66849d9a]   
+F, [2018-12-27T00:15:35.789737 #19638] FATAL -- : [f6aaf366-f6f9-4c6e-99c8-261b66849d9a] app/views/books/index.html.erb:16:in `_app_views_books_index_html_erb___555712494884983542_47426985358520'
+I, [2018-12-27T00:17:38.884104 #19885]  INFO -- : [d417735e-5c55-42a8-8ece-5abc1acd9ce6] Started GET "/" for 127.0.0.1 at 2018-12-27 00:17:38 +0700
+I, [2018-12-27T00:17:38.896799 #19885]  INFO -- : [d417735e-5c55-42a8-8ece-5abc1acd9ce6] Processing by BooksController#index as HTML
+I, [2018-12-27T00:17:38.919574 #19885]  INFO -- : [d417735e-5c55-42a8-8ece-5abc1acd9ce6]   Rendering books/index.html.erb within layouts/application
+D, [2018-12-27T00:17:38.925540 #19885] DEBUG -- : [d417735e-5c55-42a8-8ece-5abc1acd9ce6]   [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+I, [2018-12-27T00:17:38.926977 #19885]  INFO -- : [d417735e-5c55-42a8-8ece-5abc1acd9ce6]   Rendered books/index.html.erb within layouts/application (7.1ms)
+I, [2018-12-27T00:17:38.927509 #19885]  INFO -- : [d417735e-5c55-42a8-8ece-5abc1acd9ce6] Completed 500 Internal Server Error in 30ms (ActiveRecord: 1.6ms)
+F, [2018-12-27T00:17:38.929949 #19885] FATAL -- : [d417735e-5c55-42a8-8ece-5abc1acd9ce6]   
+F, [2018-12-27T00:17:38.930075 #19885] FATAL -- : [d417735e-5c55-42a8-8ece-5abc1acd9ce6] ActionView::Template::Error (SQLite3::SQLException: no such table: books: SELECT "books".* FROM "books"):
+F, [2018-12-27T00:17:38.930363 #19885] FATAL -- : [d417735e-5c55-42a8-8ece-5abc1acd9ce6]     13: 
+[d417735e-5c55-42a8-8ece-5abc1acd9ce6]     14: <section class="section">
+[d417735e-5c55-42a8-8ece-5abc1acd9ce6]     15:   <div class="book-grid">
+[d417735e-5c55-42a8-8ece-5abc1acd9ce6]     16:     <%= render @books %>
+[d417735e-5c55-42a8-8ece-5abc1acd9ce6]     17:   </div>
+[d417735e-5c55-42a8-8ece-5abc1acd9ce6]     18: </section>
+F, [2018-12-27T00:17:38.930486 #19885] FATAL -- : [d417735e-5c55-42a8-8ece-5abc1acd9ce6]   
+F, [2018-12-27T00:17:38.930547 #19885] FATAL -- : [d417735e-5c55-42a8-8ece-5abc1acd9ce6] app/views/books/index.html.erb:16:in `_app_views_books_index_html_erb___4372591375602656693_46936924825220'
+I, [2018-12-27T00:17:47.733144 #19885]  INFO -- : [c0b1007c-407f-4180-9d4c-0a4a0bae40f9] Started GET "/" for 127.0.0.1 at 2018-12-27 00:17:47 +0700
+I, [2018-12-27T00:17:47.734738 #19885]  INFO -- : [c0b1007c-407f-4180-9d4c-0a4a0bae40f9] Processing by BooksController#index as HTML
+I, [2018-12-27T00:17:47.747068 #19885]  INFO -- : [c0b1007c-407f-4180-9d4c-0a4a0bae40f9]   Rendering books/index.html.erb within layouts/application
+D, [2018-12-27T00:17:47.748899 #19885] DEBUG -- : [c0b1007c-407f-4180-9d4c-0a4a0bae40f9]   [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+I, [2018-12-27T00:17:47.750124 #19885]  INFO -- : [c0b1007c-407f-4180-9d4c-0a4a0bae40f9]   Rendered books/index.html.erb within layouts/application (2.7ms)
+I, [2018-12-27T00:17:47.750440 #19885]  INFO -- : [c0b1007c-407f-4180-9d4c-0a4a0bae40f9] Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.7ms)
+F, [2018-12-27T00:17:47.753790 #19885] FATAL -- : [c0b1007c-407f-4180-9d4c-0a4a0bae40f9]   
+F, [2018-12-27T00:17:47.754014 #19885] FATAL -- : [c0b1007c-407f-4180-9d4c-0a4a0bae40f9] ActionView::Template::Error (SQLite3::SQLException: no such table: books: SELECT "books".* FROM "books"):
+F, [2018-12-27T00:17:47.754368 #19885] FATAL -- : [c0b1007c-407f-4180-9d4c-0a4a0bae40f9]     13: 
+[c0b1007c-407f-4180-9d4c-0a4a0bae40f9]     14: <section class="section">
+[c0b1007c-407f-4180-9d4c-0a4a0bae40f9]     15:   <div class="book-grid">
+[c0b1007c-407f-4180-9d4c-0a4a0bae40f9]     16:     <%= render @books %>
+[c0b1007c-407f-4180-9d4c-0a4a0bae40f9]     17:   </div>
+[c0b1007c-407f-4180-9d4c-0a4a0bae40f9]     18: </section>
+F, [2018-12-27T00:17:47.754494 #19885] FATAL -- : [c0b1007c-407f-4180-9d4c-0a4a0bae40f9]   
+F, [2018-12-27T00:17:47.754570 #19885] FATAL -- : [c0b1007c-407f-4180-9d4c-0a4a0bae40f9] app/views/books/index.html.erb:16:in `_app_views_books_index_html_erb___4372591375602656693_46936924825220'
+I, [2018-12-27T00:18:05.987661 #19948]  INFO -- : [9fa8286f-093c-4fb7-b28b-b0c4ac6a1634] Started GET "/" for 127.0.0.1 at 2018-12-27 00:18:05 +0700
+I, [2018-12-27T00:18:06.007363 #19948]  INFO -- : [9fa8286f-093c-4fb7-b28b-b0c4ac6a1634] Processing by BooksController#index as HTML
+I, [2018-12-27T00:18:06.031936 #19948]  INFO -- : [9fa8286f-093c-4fb7-b28b-b0c4ac6a1634]   Rendering books/index.html.erb within layouts/application
+D, [2018-12-27T00:18:06.037009 #19948] DEBUG -- : [9fa8286f-093c-4fb7-b28b-b0c4ac6a1634]   [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+I, [2018-12-27T00:18:06.038365 #19948]  INFO -- : [9fa8286f-093c-4fb7-b28b-b0c4ac6a1634]   Rendered books/index.html.erb within layouts/application (6.0ms)
+I, [2018-12-27T00:18:06.038968 #19948]  INFO -- : [9fa8286f-093c-4fb7-b28b-b0c4ac6a1634] Completed 500 Internal Server Error in 31ms (ActiveRecord: 1.1ms)
+F, [2018-12-27T00:18:06.041563 #19948] FATAL -- : [9fa8286f-093c-4fb7-b28b-b0c4ac6a1634]   
+F, [2018-12-27T00:18:06.041792 #19948] FATAL -- : [9fa8286f-093c-4fb7-b28b-b0c4ac6a1634] ActionView::Template::Error (SQLite3::SQLException: no such table: books: SELECT "books".* FROM "books"):
+F, [2018-12-27T00:18:06.042211 #19948] FATAL -- : [9fa8286f-093c-4fb7-b28b-b0c4ac6a1634]     13: 
+[9fa8286f-093c-4fb7-b28b-b0c4ac6a1634]     14: <section class="section">
+[9fa8286f-093c-4fb7-b28b-b0c4ac6a1634]     15:   <div class="book-grid">
+[9fa8286f-093c-4fb7-b28b-b0c4ac6a1634]     16:     <%= render @books %>
+[9fa8286f-093c-4fb7-b28b-b0c4ac6a1634]     17:   </div>
+[9fa8286f-093c-4fb7-b28b-b0c4ac6a1634]     18: </section>
+F, [2018-12-27T00:18:06.042363 #19948] FATAL -- : [9fa8286f-093c-4fb7-b28b-b0c4ac6a1634]   
+F, [2018-12-27T00:18:06.042429 #19948] FATAL -- : [9fa8286f-093c-4fb7-b28b-b0c4ac6a1634] app/views/books/index.html.erb:16:in `_app_views_books_index_html_erb__2136202996080665585_46998837405280'
+I, [2018-12-27T00:18:09.887474 #19948]  INFO -- : [5708bf7d-1c85-4faa-a816-ee78da2f79fc] Started GET "/" for 127.0.0.1 at 2018-12-27 00:18:09 +0700
+I, [2018-12-27T00:18:09.889535 #19948]  INFO -- : [5708bf7d-1c85-4faa-a816-ee78da2f79fc] Processing by BooksController#index as HTML
+I, [2018-12-27T00:18:09.894567 #19948]  INFO -- : [5708bf7d-1c85-4faa-a816-ee78da2f79fc]   Rendering books/index.html.erb within layouts/application
+D, [2018-12-27T00:18:09.896428 #19948] DEBUG -- : [5708bf7d-1c85-4faa-a816-ee78da2f79fc]   [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+I, [2018-12-27T00:18:09.898202 #19948]  INFO -- : [5708bf7d-1c85-4faa-a816-ee78da2f79fc]   Rendered books/index.html.erb within layouts/application (3.2ms)
+I, [2018-12-27T00:18:09.898783 #19948]  INFO -- : [5708bf7d-1c85-4faa-a816-ee78da2f79fc] Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.7ms)
+F, [2018-12-27T00:18:09.902140 #19948] FATAL -- : [5708bf7d-1c85-4faa-a816-ee78da2f79fc]   
+F, [2018-12-27T00:18:09.902523 #19948] FATAL -- : [5708bf7d-1c85-4faa-a816-ee78da2f79fc] ActionView::Template::Error (SQLite3::SQLException: no such table: books: SELECT "books".* FROM "books"):
+F, [2018-12-27T00:18:09.903086 #19948] FATAL -- : [5708bf7d-1c85-4faa-a816-ee78da2f79fc]     13: 
+[5708bf7d-1c85-4faa-a816-ee78da2f79fc]     14: <section class="section">
+[5708bf7d-1c85-4faa-a816-ee78da2f79fc]     15:   <div class="book-grid">
+[5708bf7d-1c85-4faa-a816-ee78da2f79fc]     16:     <%= render @books %>
+[5708bf7d-1c85-4faa-a816-ee78da2f79fc]     17:   </div>
+[5708bf7d-1c85-4faa-a816-ee78da2f79fc]     18: </section>
+F, [2018-12-27T00:18:09.903253 #19948] FATAL -- : [5708bf7d-1c85-4faa-a816-ee78da2f79fc]   
+F, [2018-12-27T00:18:09.903330 #19948] FATAL -- : [5708bf7d-1c85-4faa-a816-ee78da2f79fc] app/views/books/index.html.erb:16:in `_app_views_books_index_html_erb__2136202996080665585_46998837405280'
+I, [2018-12-27T08:39:25.895693 #28992]  INFO -- : [83ff1aff-ea39-46c9-9745-6cdedd504380] Started GET "/" for 127.0.0.1 at 2018-12-27 08:39:25 +0700
+I, [2018-12-27T08:39:25.948766 #28992]  INFO -- : [83ff1aff-ea39-46c9-9745-6cdedd504380] Processing by BooksController#index as HTML
+I, [2018-12-27T08:39:25.970726 #28992]  INFO -- : [83ff1aff-ea39-46c9-9745-6cdedd504380]   Rendering books/index.html.erb within layouts/application
+D, [2018-12-27T08:39:25.976882 #28992] DEBUG -- : [83ff1aff-ea39-46c9-9745-6cdedd504380]   [1m[36mBook Load (0.8ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+I, [2018-12-27T08:39:25.978345 #28992]  INFO -- : [83ff1aff-ea39-46c9-9745-6cdedd504380]   Rendered books/index.html.erb within layouts/application (7.3ms)
+I, [2018-12-27T08:39:25.978956 #28992]  INFO -- : [83ff1aff-ea39-46c9-9745-6cdedd504380] Completed 500 Internal Server Error in 30ms (ActiveRecord: 1.6ms)
+F, [2018-12-27T08:39:25.981847 #28992] FATAL -- : [83ff1aff-ea39-46c9-9745-6cdedd504380]   
+F, [2018-12-27T08:39:25.982100 #28992] FATAL -- : [83ff1aff-ea39-46c9-9745-6cdedd504380] ActionView::Template::Error (SQLite3::SQLException: no such table: books: SELECT "books".* FROM "books"):
+F, [2018-12-27T08:39:25.982430 #28992] FATAL -- : [83ff1aff-ea39-46c9-9745-6cdedd504380]     13: 
+[83ff1aff-ea39-46c9-9745-6cdedd504380]     14: <section class="section">
+[83ff1aff-ea39-46c9-9745-6cdedd504380]     15:   <div class="book-grid">
+[83ff1aff-ea39-46c9-9745-6cdedd504380]     16:     <%= render @books %>
+[83ff1aff-ea39-46c9-9745-6cdedd504380]     17:   </div>
+[83ff1aff-ea39-46c9-9745-6cdedd504380]     18: </section>
+F, [2018-12-27T08:39:25.982490 #28992] FATAL -- : [83ff1aff-ea39-46c9-9745-6cdedd504380]   
+F, [2018-12-27T08:39:25.982608 #28992] FATAL -- : [83ff1aff-ea39-46c9-9745-6cdedd504380] app/views/books/index.html.erb:16:in `_app_views_books_index_html_erb___605364361723636365_47462306727560'

@@ -1,0 +1,544 @@
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (105.8ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (88.2ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (87.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs"[0m
+  [1m[35m (98.2ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (77.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "books"[0m
+  [1m[35m (76.7ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "author" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "libraries"[0m
+  [1m[35m (100.7ms)[0m  [1m[35mCREATE TABLE "libraries" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "book_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (97.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "stripe_id" varchar, "stripe_subscription_id" varchar, "card_last4" varchar, "card_exp_month" integer, "card_exp_year" integer, "card_type" varchar, "admin" boolean, "subscribed" boolean)[0m
+  [1m[35m (99.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (76.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (99.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (70.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180423235557)[0m
+  [1m[35m (77.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180423234307),
+(20180423235417),
+(20180423233748),
+(20180423234909);
+
+[0m
+  [1m[35m (110.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2018-12-26 16:36:45.716846"], ["updated_at", "2018-12-26 16:36:45.716846"]]
+  [1m[35m (70.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.7ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.138901', '2018-12-26 16:36:46.138901', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.138901', '2018-12-26 16:36:46.138901', 298486374)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.146988', '2018-12-26 16:36:46.146988', 980190962)[0m
+  [1m[36mFixture Insert (1.1ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.146988', '2018-12-26 16:36:46.146988', 298486374)[0m
+  [1m[35m (2.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.636906', '2018-12-26 16:36:46.636906', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.636906', '2018-12-26 16:36:46.636906', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.638796', '2018-12-26 16:36:46.638796', 980190962)[0m
+  [1m[36mFixture Insert (0.8ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.638796', '2018-12-26 16:36:46.638796', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.670233', '2018-12-26 16:36:46.670233', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.670233', '2018-12-26 16:36:46.670233', 298486374)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.672353', '2018-12-26 16:36:46.672353', 980190962)[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.672353', '2018-12-26 16:36:46.672353', 298486374)[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.696322', '2018-12-26 16:36:46.696322', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.696322', '2018-12-26 16:36:46.696322', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.698227', '2018-12-26 16:36:46.698227', 980190962)[0m
+  [1m[36mFixture Insert (0.8ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.698227', '2018-12-26 16:36:46.698227', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.719883', '2018-12-26 16:36:46.719883', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.719883', '2018-12-26 16:36:46.719883', 298486374)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.722068', '2018-12-26 16:36:46.722068', 980190962)[0m
+  [1m[36mFixture Insert (0.8ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.722068', '2018-12-26 16:36:46.722068', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.745753', '2018-12-26 16:36:46.745753', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.745753', '2018-12-26 16:36:46.745753', 298486374)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.747433', '2018-12-26 16:36:46.747433', 980190962)[0m
+  [1m[36mFixture Insert (0.8ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.747433', '2018-12-26 16:36:46.747433', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.769600', '2018-12-26 16:36:46.769600', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 16:36:46.769600', '2018-12-26 16:36:46.769600', 298486374)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.771476', '2018-12-26 16:36:46.771476', 980190962)[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 16:36:46.771476', '2018-12-26 16:36:46.771476', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (2.7ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:30.592662', '2018-12-26 17:05:30.592662', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:30.592662', '2018-12-26 17:05:30.592662', 298486374)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:30.600770', '2018-12-26 17:05:30.600770', 980190962)[0m
+  [1m[36mFixture Insert (1.8ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:30.600770', '2018-12-26 17:05:30.600770', 298486374)[0m
+  [1m[35m (2.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.3ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:31.140757', '2018-12-26 17:05:31.140757', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:31.140757', '2018-12-26 17:05:31.140757', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:31.142375', '2018-12-26 17:05:31.142375', 980190962)[0m
+  [1m[36mFixture Insert (1.1ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:31.142375', '2018-12-26 17:05:31.142375', 298486374)[0m
+  [1m[35m (1.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.3ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:31.160209', '2018-12-26 17:05:31.160209', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:31.160209', '2018-12-26 17:05:31.160209', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:31.161558', '2018-12-26 17:05:31.161558', 980190962)[0m
+  [1m[36mFixture Insert (1.5ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:31.161558', '2018-12-26 17:05:31.161558', 298486374)[0m
+  [1m[35m (2.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:31.185963', '2018-12-26 17:05:31.185963', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:31.185963', '2018-12-26 17:05:31.185963', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:31.187869', '2018-12-26 17:05:31.187869', 980190962)[0m
+  [1m[36mFixture Insert (1.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:31.187869', '2018-12-26 17:05:31.187869', 298486374)[0m
+  [1m[35m (2.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:31.212220', '2018-12-26 17:05:31.212220', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:31.212220', '2018-12-26 17:05:31.212220', 298486374)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:31.214293', '2018-12-26 17:05:31.214293', 980190962)[0m
+  [1m[36mFixture Insert (1.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:31.214293', '2018-12-26 17:05:31.214293', 298486374)[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:31.237323', '2018-12-26 17:05:31.237323', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:31.237323', '2018-12-26 17:05:31.237323', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:31.239286', '2018-12-26 17:05:31.239286', 980190962)[0m
+  [1m[36mFixture Insert (1.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:31.239286', '2018-12-26 17:05:31.239286', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:31.260343', '2018-12-26 17:05:31.260343', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:05:31.260343', '2018-12-26 17:05:31.260343', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:31.262182', '2018-12-26 17:05:31.262182', 980190962)[0m
+  [1m[36mFixture Insert (1.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:05:31.262182', '2018-12-26 17:05:31.262182', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.337241', '2018-12-26 17:12:31.337241', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.337241', '2018-12-26 17:12:31.337241', 298486374)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.343939', '2018-12-26 17:12:31.343939', 980190962)[0m
+  [1m[36mFixture Insert (1.7ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.343939', '2018-12-26 17:12:31.343939', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.3ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.739286', '2018-12-26 17:12:31.739286', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.739286', '2018-12-26 17:12:31.739286', 298486374)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.740647', '2018-12-26 17:12:31.740647', 980190962)[0m
+  [1m[36mFixture Insert (1.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.740647', '2018-12-26 17:12:31.740647', 298486374)[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.758167', '2018-12-26 17:12:31.758167', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.758167', '2018-12-26 17:12:31.758167', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.759627', '2018-12-26 17:12:31.759627', 980190962)[0m
+  [1m[36mFixture Insert (1.8ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.759627', '2018-12-26 17:12:31.759627', 298486374)[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.780861', '2018-12-26 17:12:31.780861', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.780861', '2018-12-26 17:12:31.780861', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.782722', '2018-12-26 17:12:31.782722', 980190962)[0m
+  [1m[36mFixture Insert (1.5ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.782722', '2018-12-26 17:12:31.782722', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.803206', '2018-12-26 17:12:31.803206', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.803206', '2018-12-26 17:12:31.803206', 298486374)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.804825', '2018-12-26 17:12:31.804825', 980190962)[0m
+  [1m[36mFixture Insert (1.0ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.804825', '2018-12-26 17:12:31.804825', 298486374)[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.819871', '2018-12-26 17:12:31.819871', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.819871', '2018-12-26 17:12:31.819871', 298486374)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.821373', '2018-12-26 17:12:31.821373', 980190962)[0m
+  [1m[36mFixture Insert (1.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.821373', '2018-12-26 17:12:31.821373', 298486374)[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.838717', '2018-12-26 17:12:31.838717', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:12:31.838717', '2018-12-26 17:12:31.838717', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.840250', '2018-12-26 17:12:31.840250', 980190962)[0m
+  [1m[36mFixture Insert (1.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:12:31.840250', '2018-12-26 17:12:31.840250', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:47.880552', '2018-12-26 17:14:47.880552', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:47.880552', '2018-12-26 17:14:47.880552', 298486374)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:47.885021', '2018-12-26 17:14:47.885021', 980190962)[0m
+  [1m[36mFixture Insert (1.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:47.885021', '2018-12-26 17:14:47.885021', 298486374)[0m
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:47.966009', '2018-12-26 17:14:47.966009', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:47.966009', '2018-12-26 17:14:47.966009', 298486374)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:47.967718', '2018-12-26 17:14:47.967718', 980190962)[0m
+  [1m[36mFixture Insert (1.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:47.967718', '2018-12-26 17:14:47.967718', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:47.985008', '2018-12-26 17:14:47.985008', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:47.985008', '2018-12-26 17:14:47.985008', 298486374)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:47.986562', '2018-12-26 17:14:47.986562', 980190962)[0m
+  [1m[36mFixture Insert (1.5ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:47.986562', '2018-12-26 17:14:47.986562', 298486374)[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:48.011216', '2018-12-26 17:14:48.011216', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:48.011216', '2018-12-26 17:14:48.011216', 298486374)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:48.013447', '2018-12-26 17:14:48.013447', 980190962)[0m
+  [1m[36mFixture Insert (2.0ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:48.013447', '2018-12-26 17:14:48.013447', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:48.036182', '2018-12-26 17:14:48.036182', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:48.036182', '2018-12-26 17:14:48.036182', 298486374)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:48.038364', '2018-12-26 17:14:48.038364', 980190962)[0m
+  [1m[36mFixture Insert (1.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:48.038364', '2018-12-26 17:14:48.038364', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:48.060298', '2018-12-26 17:14:48.060298', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:48.060298', '2018-12-26 17:14:48.060298', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:48.062180', '2018-12-26 17:14:48.062180', 980190962)[0m
+  [1m[36mFixture Insert (0.9ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:48.062180', '2018-12-26 17:14:48.062180', 298486374)[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:48.104426', '2018-12-26 17:14:48.104426', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-26 17:14:48.104426', '2018-12-26 17:14:48.104426', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:48.106190', '2018-12-26 17:14:48.106190', 980190962)[0m
+  [1m[36mFixture Insert (1.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-26 17:14:48.106190', '2018-12-26 17:14:48.106190', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.100134', '2018-12-27 02:01:32.100134', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.100134', '2018-12-27 02:01:32.100134', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.106986', '2018-12-27 02:01:32.106986', 980190962)[0m
+  [1m[36mFixture Insert (1.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.106986', '2018-12-27 02:01:32.106986', 298486374)[0m
+  [1m[35m (2.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.3ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.410107', '2018-12-27 02:01:32.410107', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.410107', '2018-12-27 02:01:32.410107', 298486374)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.411956', '2018-12-27 02:01:32.411956', 980190962)[0m
+  [1m[36mFixture Insert (1.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.411956', '2018-12-27 02:01:32.411956', 298486374)[0m
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.432124', '2018-12-27 02:01:32.432124', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.432124', '2018-12-27 02:01:32.432124', 298486374)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.433978', '2018-12-27 02:01:32.433978', 980190962)[0m
+  [1m[36mFixture Insert (1.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.433978', '2018-12-27 02:01:32.433978', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.453442', '2018-12-27 02:01:32.453442', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.453442', '2018-12-27 02:01:32.453442', 298486374)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.455191', '2018-12-27 02:01:32.455191', 980190962)[0m
+  [1m[36mFixture Insert (1.5ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.455191', '2018-12-27 02:01:32.455191', 298486374)[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.476548', '2018-12-27 02:01:32.476548', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.476548', '2018-12-27 02:01:32.476548', 298486374)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.478434', '2018-12-27 02:01:32.478434', 980190962)[0m
+  [1m[36mFixture Insert (1.7ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.478434', '2018-12-27 02:01:32.478434', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.501178', '2018-12-27 02:01:32.501178', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.501178', '2018-12-27 02:01:32.501178', 298486374)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.503106', '2018-12-27 02:01:32.503106', 980190962)[0m
+  [1m[36mFixture Insert (1.6ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.503106', '2018-12-27 02:01:32.503106', 298486374)[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.526249', '2018-12-27 02:01:32.526249', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:01:32.526249', '2018-12-27 02:01:32.526249', 298486374)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.528222', '2018-12-27 02:01:32.528222', 980190962)[0m
+  [1m[36mFixture Insert (1.7ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:01:32.528222', '2018-12-27 02:01:32.528222', 298486374)[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (2.1ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.779121', '2018-12-27 02:26:03.779121', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.779121', '2018-12-27 02:26:03.779121', 298486374)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.783778', '2018-12-27 02:26:03.783778', 980190962)[0m
+  [1m[36mFixture Insert (1.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.783778', '2018-12-27 02:26:03.783778', 298486374)[0m
+  [1m[35m (1.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.878710', '2018-12-27 02:26:03.878710', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.878710', '2018-12-27 02:26:03.878710', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.880460', '2018-12-27 02:26:03.880460', 980190962)[0m
+  [1m[36mFixture Insert (1.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.880460', '2018-12-27 02:26:03.880460', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (1.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.900776', '2018-12-27 02:26:03.900776', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.900776', '2018-12-27 02:26:03.900776', 298486374)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.902691', '2018-12-27 02:26:03.902691', 980190962)[0m
+  [1m[36mFixture Insert (1.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.902691', '2018-12-27 02:26:03.902691', 298486374)[0m
+  [1m[35m (1.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.925245', '2018-12-27 02:26:03.925245', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.925245', '2018-12-27 02:26:03.925245', 298486374)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.926724', '2018-12-27 02:26:03.926724', 980190962)[0m
+  [1m[36mFixture Insert (1.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.926724', '2018-12-27 02:26:03.926724', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.945695', '2018-12-27 02:26:03.945695', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.945695', '2018-12-27 02:26:03.945695', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.947254', '2018-12-27 02:26:03.947254', 980190962)[0m
+  [1m[36mFixture Insert (2.0ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.947254', '2018-12-27 02:26:03.947254', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.968892', '2018-12-27 02:26:03.968892', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.968892', '2018-12-27 02:26:03.968892', 298486374)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.970530', '2018-12-27 02:26:03.970530', 980190962)[0m
+  [1m[36mFixture Insert (2.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.970530', '2018-12-27 02:26:03.970530', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "books"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "libraries"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.992356', '2018-12-27 02:26:03.992356', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "description", "author", "user_id", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 1, '2018-12-27 02:26:03.992356', '2018-12-27 02:26:03.992356', 298486374)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.994117', '2018-12-27 02:26:03.994117', 980190962)[0m
+  [1m[36mFixture Insert (1.6ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2018-12-27 02:26:03.994117', '2018-12-27 02:26:03.994117', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
