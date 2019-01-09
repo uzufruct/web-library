@@ -67,6 +67,7 @@ gem 'bulma-rails'
 gem 'simple_form'
 gem 'sidekiq'
 gem 'stripe', '~> 3.13'
+gem 'pundit'
 group :development, :test do
   gem 'better_errors'
   gem 'guard'

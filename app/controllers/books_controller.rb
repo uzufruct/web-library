@@ -15,7 +15,11 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
-    @book = current_user.books.build
+    if current_user.admin?
+      @book = current_user.books.build
+    else
+      raise Pundit::NotAuthorizedError
+    end
   end
 
   # GET /books/1/edit
@@ -25,16 +29,20 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = current_user.books.build(book_params)
+    if current_user.admin?
+      @book = current_user.books.build(book_params)
 
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render :show, status: :created, location: @book }
-      else
-        format.html { render :new }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @book.save
+          format.html { redirect_to @book, notice: 'Book was successfully created.' }
+          format.json { render :show, status: :created, location: @book }
+        else
+          format.html { render :new }
+          format.json { render json: @book.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      raise Pundit::NotAuthorizedError
     end
   end
 
