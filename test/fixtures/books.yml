@@ -7,7 +7,7 @@ one:
   user_id: 1
 
 two:
-  title: MyString
-  description: MyText
-  author: MyString
-  user_id: 1
+  title: MyString1
+  description: MyText1
+  author: MyString1
+  user_id: 2

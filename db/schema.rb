@@ -71,8 +71,6 @@ ActiveRecord::Schema.define(version: 2018_04_23_235557) do
     t.string "card_type"
     t.boolean "admin"
     t.boolean "subscribed"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

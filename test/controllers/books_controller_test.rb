@@ -6,21 +6,13 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get books_url
+    get '/books'
     assert_response :success
   end
 
   test "should get new" do
-    get new_book_url
-    assert_response :success
-  end
-
-  test "should create book" do
-    assert_difference('Book.count') do
-      post books_url, params: { book: { author: @book.author, description: @book.description, title: @book.title, user_id: @book.user_id } }
-    end
-
-    assert_redirected_to book_url(Book.last)
+    get '/books/new'
+    assert_redirected_to '/users/sign_in'
   end
 
   test "should show book" do
@@ -30,19 +22,6 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
 
   test "should get edit" do
     get edit_book_url(@book)
-    assert_response :success
-  end
-
-  test "should update book" do
-    patch book_url(@book), params: { book: { author: @book.author, description: @book.description, title: @book.title, user_id: @book.user_id } }
-    assert_redirected_to book_url(@book)
-  end
-
-  test "should destroy book" do
-    assert_difference('Book.count', -1) do
-      delete book_url(@book)
-    end
-
-    assert_redirected_to books_url
+    assert_redirected_to '/users/sign_in'
   end
 end
